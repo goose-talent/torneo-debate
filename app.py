@@ -262,7 +262,7 @@ with st.form("formulario_inscripcion"):
             correo,
             director,
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             ON DUPLICATE KEY UPDATE
             direccion = VALUES(direccion),
             localidad = VALUES(localidad),
