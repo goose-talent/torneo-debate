@@ -78,10 +78,10 @@ with st.form("formulario_inscripcion"):
 
     for i in range(num_profesores):
 
-        st.markdown(f"### Profesor {i+1}")
+        st.markdown(f"### Profesor/Formador {i+1}")
 
         profesor = st.text_input(
-            "Profesor preparador *",
+            "Profesor/Formador *",
             key=f"profesor_{i}"
         )
 
