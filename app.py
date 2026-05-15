@@ -167,12 +167,10 @@ with st.form("formulario_inscripcion"):
             })
     with open("politica_privacidad_goose_talent.pdf", "rb") as pdf_file:
         PDFbyte = pdf_file.read()
-    st.download_button(
-        label="📄 Consultar política de privacidad",
-        data=PDFbyte,
-        file_name="politica_privacidad_goose_talent.pdf",
-        mime="application/pdf"
-        )
+        st.markdown(
+            "[📄 Consultar política de privacidad](https://github.com/goose-talent/torneo-debate/raw/main/politica_privacidad_goose_talent.pdf)"
+            )
+
    
     privacidad = st.checkbox(
         "Acepto y autorizo a que mis datos sean tratados por GOOSE TALENT, "
