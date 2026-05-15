@@ -167,20 +167,20 @@ with st.form("formulario_inscripcion"):
             })
     with open("politica_privacidad_goose_talent.pdf", "rb") as pdf_file:
         PDFbyte = pdf_file.read()
-        st.download_button(
-            label="📄 Consultar política de privacidad",
-            data=PDFbyte,
-            file_name="politica_privacidad_goose_talent.pdf",
-            mime="application/pdf"
-            )
-    with st.form("formulario"):
-        privacidad = st.checkbox(
-            "Acepto y autorizo a que mis datos sean tratados por GOOSE TALENT, "
-            "con la finalidad de remitirme, por cualquier medio, incluidos los electrónicos "
-            "(SMS, WhatsApp y correo electrónico), información sobre cualquier curso o "
-            "programa actual o futuro de GOOSE TALENT, talleres de orientación y sesiones "
-            "informativas, así como recordatorios de las mismas."
-            )
+    st.download_button(
+        label="📄 Consultar política de privacidad",
+        data=PDFbyte,
+        file_name="politica_privacidad_goose_talent.pdf",
+        mime="application/pdf"
+        )
+   
+    privacidad = st.checkbox(
+        "Acepto y autorizo a que mis datos sean tratados por GOOSE TALENT, "
+        "con la finalidad de remitirme, por cualquier medio, incluidos los electrónicos "
+        "(SMS, WhatsApp y correo electrónico), información sobre cualquier curso o "
+        "programa actual o futuro de GOOSE TALENT, talleres de orientación y sesiones "
+        "informativas, así como recordatorios de las mismas."
+        )
 
     if st.form_submit_button("Enviar solicitud"):
         if not privacidad:
