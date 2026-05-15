@@ -260,7 +260,7 @@ with st.form("formulario_inscripcion"):
             codigo_postal,
             telefono,
             correo,
-            director,
+            director
             )
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             ON DUPLICATE KEY UPDATE
@@ -270,7 +270,7 @@ with st.form("formulario_inscripcion"):
             codigo_postal = VALUES(codigo_postal),
             telefono = VALUES(telefono),
             correo = VALUES(correo),
-            director = VALUES(director),
+            director = VALUES(director)
             """
             cursor.execute(sql_centro, (
                 denominacion,
@@ -280,7 +280,7 @@ with st.form("formulario_inscripcion"):
                 codigo_postal,
                 telefono_centro,
                 correo_centro,
-                director,
+                director
                 ))
             conexion.commit()
             cursor.execute(
