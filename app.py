@@ -172,7 +172,7 @@ with st.form("formulario_inscripcion"):
         data=PDFbyte,
         file_name="politica_privacidad_goose_talent.pdf",
         mime="application/pdf"
-    )
+        )
     privacidad = st.checkbox(
         "Acepto y autorizo a que mis datos sean tratados por GOOSE TALENT, "
         "con la finalidad de remitirme, por cualquier medio, incluidos los electrónicos "
