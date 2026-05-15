@@ -169,7 +169,11 @@ with st.form("formulario_inscripcion"):
         "[📄 Consultar política de privacidad](politica_privacidad.pdf)"
             )
     privacidad = st.checkbox(
-        "He leído y acepto la política de privacidad y el tratamiento de datos personales *"
+        ""Acepto y autorizo a que mis datos sean tratados por GOOSE TALENT, ""
+        ""con la finalidad de remitirme, por cualquier medio, incluidos los electrónicos ""
+        ""(SMS, WhatsApp y correo electrónico), información sobre cualquier curso o ""
+        ""programa actual o futuro de GOOSE TALENT, talleres de orientación y sesiones ""
+        ""informativas, así como recordatorios de las mismas.""
         )
 
     if st.form_submit_button("Enviar solicitud"):
