@@ -165,9 +165,14 @@ with st.form("formulario_inscripcion"):
                 "nombre_equipo": nombre_equipo,
                 "miembros": miembros
             })
-    st.markdown(
-        "[📄 Consultar política de privacidad](politica_privacidad.pdf)"
-            )
+    with open("politica_privacidad_goose_talent.pdf", "rb") as pdf_file:
+    PDFbyte = pdf_file.read()
+    st.download_button(
+        label="📄 Consultar Política de Privacidad",
+        data=PDFbyte,
+        file_name="politica_privacidad_goose_talent.pdf",
+        mime="application/pdf"
+    )
     privacidad = st.checkbox(
         "Acepto y autorizo a que mis datos sean tratados por GOOSE TALENT, "
         "con la finalidad de remitirme, por cualquier medio, incluidos los electrónicos "
