@@ -35,7 +35,7 @@ conexion = mysql.connector.connect(
     user=st.secrets["MYSQL_USER"],
     password=st.secrets["MYSQL_PASSWORD"],
     database=st.secrets["MYSQL_DATABASE"]
-    )
+)
 
 cursor = conexion.cursor()
 
@@ -50,8 +50,8 @@ st.markdown(
 )
 with st.form("formulario_inscripcion"):
     
-    torneo = st.subheader("II Concurso De Oratoria Para Primaria JMD CHAMBERÍ" *")
-    torneo = "II Concurso De Oratoria Para Primaria JMD CHAMBERÍ"
+    torneo = st.subheader("II Competición de Debate Escolar JMD CHAMBERI *")
+    torneo = "II Competición de Debate Escolar JMD CHAMBERI"
 
     st.subheader("Datos del centro")
 
