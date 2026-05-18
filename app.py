@@ -253,6 +253,7 @@ with st.form("formulario_inscripcion"):
             
             sql_centro = """
             INSERT INTO centros (
+            torneo_id,
             denominacion,
             direccion,
             localidad,
@@ -262,7 +263,7 @@ with st.form("formulario_inscripcion"):
             correo,
             director
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             ON DUPLICATE KEY UPDATE
             direccion = VALUES(direccion),
             localidad = VALUES(localidad),
@@ -273,6 +274,7 @@ with st.form("formulario_inscripcion"):
             director = VALUES(director)
             """
             cursor.execute(sql_centro, (
+                torneo_id,
                 denominacion,
                 direccion,
                 localidad,
@@ -291,6 +293,7 @@ with st.form("formulario_inscripcion"):
             for profesor_data in profesores:
                 sql_profesor = """
                     INSERT INTO profesores (
+                        torneo_id,
                         centro_id,
                         nombre_centro,
                         nombre,
@@ -298,7 +301,7 @@ with st.form("formulario_inscripcion"):
                         telefono,
                         correo
                         )
-                        VALUES (%s, %s, %s, %s, %s, %s)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
 
                     ON DUPLICATE KEY UPDATE
                         nombre = VALUES(nombre),
@@ -308,6 +311,7 @@ with st.form("formulario_inscripcion"):
                         nombre_centro = VALUES(nombre_centro)
                         """
                 cursor.execute(sql_profesor, (
+                    torneo_id,
                     centro_id,
                     denominacion,
                     profesor_data["nombre"],
@@ -374,6 +378,7 @@ with st.form("formulario_inscripcion"):
                     apellidos = ""
                 sql_debatiente = """
                 INSERT INTO debatientes (
+                    torneo_id,
                     equipo_id,
                     numero_participante,
                     nombre,
@@ -383,7 +388,7 @@ with st.form("formulario_inscripcion"):
                     correo,
                     rol
                 )
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON DUPLICATE KEY UPDATE
                 nombre = VALUES(nombre),
                 apellidos = VALUES(apellidos),
@@ -393,6 +398,7 @@ with st.form("formulario_inscripcion"):
                 rol = VALUES(rol)
                 """
                 valores = (
+                    torneo_id,
                     equipo_id,
                     miembro["numero_participante"],
                     nombre,
