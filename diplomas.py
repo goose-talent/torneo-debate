@@ -10,60 +10,54 @@ conexion = mysql.connector.connect(
     user=st.secrets["MYSQL_USER"],
     password=st.secrets["MYSQL_PASSWORD"],
     database=st.secrets["MYSQL_DATABASE"]
-    )
+)
 
 cursor = conexion.cursor(dictionary=True)
 
 os.makedirs("diplomas", exist_ok=True)
 
-def convertir_pdf(nombre):
+def convertir_pdf(ruta_docx, carpeta_salida):
     subprocess.run([
         "/Applications/LibreOffice.app/Contents/MacOS/soffice",
         "--headless",
         "--convert-to", "pdf",
-        "--outdir", "diplomas",
-        f"diplomas/{nombre}"
+        "--outdir", carpeta_salida,
+        ruta_docx
     ])
 
-cursor.execute("SELECT nombre, apellidos, dni FROM debatientes")
+cursor.execute("""
+SELECT nombre, apellidos, centro
+FROM debatientes
+""")
+
 debatientes = cursor.fetchall()
 
 for p in debatientes:
+
+   
+    centro_limpio = p["centro"].replace("/", "-")
+    carpeta_centro = f"diplomas/{centro_limpio}"
+
+    os.makedirs(carpeta_centro, exist_ok=True)
+
     doc = DocxTemplate("DIPLOMA_DEBATIENTE.docx")
 
+    
     context = {
-        "nombre": f"{p['nombre']} {p['apellidos']}",
-        "dni": p["dni"]
+        "nombre_apellido": f"{p['nombre']} {p['apellidos']}",
+        "nombre_centro": p["centro"]
     }
 
     doc.render(context)
 
-    archivo = f"diploma_{p['nombre']}_{p['apellidos']}.docx"
-    doc.save(f"diplomas/{archivo}")
-    convertir_pdf(archivo)
+    nombre_archivo = f"diploma_{p['nombre']}_{p['apellidos']}.docx"
+    ruta_docx = f"{carpeta_centro}/{nombre_archivo}"
 
-cursor.execute("SELECT tutor AS nombre_for, tutor_dni, centro FROM equipos")
-formadores = cursor.fetchall()
+   
+    doc.save(ruta_docx)
 
-vistos = set()
+   
+    convertir_pdf(ruta_docx, carpeta_centro)
 
-for f in formadores:
-    if f["tutor_dni"] in vistos:
-        continue
-    vistos.add(f["tutor_dni"])
 
-    doc = DocxTemplate("DIPLOMA_FORMADORES.docx")
-
-    context = {
-        "nombre_for": f["nombre_for"],
-        "dni_for": f["tutor_dni"],
-        "centro": f["centro"]
-    }
-
-    doc.render(context)
-
-    archivo = f"diploma_formador_{f['nombre_for']}.docx"
-    doc.save(f"diplomas/{archivo}")
-    convertir_pdf(archivo)
-
-print("Diplomas generados correctamente")
+print("Diplomas PDF generados correctamente")
