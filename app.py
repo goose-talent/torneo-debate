@@ -343,7 +343,8 @@ with st.form("formulario_inscripcion"):
                         FROM equipos
                         WHERE torneo_id = %s
                         AND numero_equipo = %s
-                        """, (torneo_id,equipo["numero_equipo"]))
+                        and centro_id = %s
+                        """, (torneo_id,equipo["numero_equipo"],centro_id))
             equipo_id = cursor.fetchone()[0]
             for miembro in equipo["miembros"]:
                 if not miembro["nombre"].strip():
