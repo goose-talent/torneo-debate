@@ -349,19 +349,6 @@ with st.form("formulario_inscripcion"):
                 if not miembro["nombre"].strip():
                     st.error("Todos los participantes deben tener nombre")
                     st.stop()
-                    if not miembro["dni"].strip():
-                        st.error("Todos los participantes deben tener DNI/NIE")
-                        st.stop()
-                        if not validar_dni_nie(miembro["dni"]):
-                            st.error(
-                                f"El DNI/NIE de {miembro['nombre']} no es válido"
-                                )
-                            st.stop()
-                            if not miembro["curso"].strip():
-                                st.error(
-                                    f"El participante {miembro['nombre']} debe tener curso"
-                                    )
-                                st.stop()
                 if not miembro["dni"].strip():
                     st.error("Todos los participantes deben tener DNI/NIE")
                     st.stop()
@@ -369,6 +356,16 @@ with st.form("formulario_inscripcion"):
                     st.error(
                         f"El DNI/NIE de {miembro['nombre']} no es válido"
                         )
+                    st.stop()
+                if not miembro["curso"].strip():
+                    st.error(
+                        f"El participante {miembro['nombre']} debe tener curso"
+                        )
+                    st.stop()
+                if not miembro["rol"].strip():
+                    st.error(
+                        f"El participante {miembro['nombre']} debe tener rol"
+                    )
                     st.stop()
                 nombre_completo = miembro["nombre"].split(" ", 1)
                 nombre = nombre_completo[0]
