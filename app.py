@@ -154,17 +154,17 @@ with st.form("formulario_inscripcion"):
                     key=f"rol_{i}_{j}"
                 ) 
             miembros.append({
-                    "numero_participante": j + 1,
-                    "nombre": nombre,
-                    "dni": dni,
-                    "curso": curso,
-                    "mail": mail,
-                    "rol": rol
+                "numero_participante": j + 1,
+                "nombre": nombre,
+                "dni": dni,
+                "curso": curso,
+                "mail": mail,
+                "rol": rol
                 })
-            equipos.append({
-                "numero_equipo": i + 1,
-                "nombre_equipo": nombre_equipo,
-                "miembros": miembros
+        equipos.append({
+            "numero_equipo": i + 1,
+            "nombre_equipo": nombre_equipo,
+            "miembros": miembros
             })
     with open("politica_privacidad_goose_talent.pdf", "rb") as pdf_file:
         PDFbyte = pdf_file.read()
