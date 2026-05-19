@@ -351,8 +351,9 @@ with st.form("formulario_inscripcion"):
                     st.error("Todos los participantes deben tener nombre")
                     st.stop()
                 
-                if not validar_dni_nie(miembro["dni"]):
-                    st.error(
+                if miembro["dni"].strip():
+                    if not validar_dni_nie(miembro["dni"]):
+                        st.error(
                         f"El DNI/NIE de {miembro['nombre']} no es válido"
                         )
                     st.stop()
