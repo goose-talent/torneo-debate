@@ -65,20 +65,14 @@ with st.form("formulario_inscripcion"):
     director = st.text_input("Director del centro *")
     
     st.subheader("Datos de la convocatoria")
-
-    if "num_profesores" not in st.session_state:
-        st.session_state.num_profesores = 1
-    st.write("Número de profesores")
-    col1, col2, col3 = st.columns([1,1,4])
-    with col1:
-        if st.form_submit_button("➖ Profesor"):
-            if st.session_state.num_profesores > 1:
-                st.session_state.num_profesores -= 1
-    with col2:
-        if st.form_submit_button("➕ Profesor"):
-            if st.session_state.num_profesores < 3:
-                st.session_state.num_profesores += 1
-    num_profesores = st.session_state.num_profesores
+    num_profesores = st.number_input(
+        "Número de profesores",
+        min_value=1,
+        max_value=3,
+        value=1,
+        step=1
+        )
+    
     profesores = []
 
     for i in range(num_profesores):
