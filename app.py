@@ -137,7 +137,7 @@ with st.form("formulario_inscripcion"):
                     key=f"nombre_{i}_{j}"
                 )
             dni = st.text_input(
-                    "DNI/NIE *",
+                    "DNI/NIE ",
                     key=f"dni_{i}_{j}"
                 )
             curso = st.text_input(
@@ -350,9 +350,7 @@ with st.form("formulario_inscripcion"):
                 if not miembro["nombre"].strip():
                     st.error("Todos los participantes deben tener nombre")
                     st.stop()
-                if not miembro["dni"].strip():
-                    st.error("Todos los participantes deben tener DNI/NIE")
-                    st.stop()
+                
                 if not validar_dni_nie(miembro["dni"]):
                     st.error(
                         f"El DNI/NIE de {miembro['nombre']} no es válido"
