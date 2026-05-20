@@ -353,9 +353,9 @@ with st.form("formulario_inscripcion"):
                 if miembro["dni"].strip():
                     if not validar_dni_nie(miembro["dni"]):
                         st.error(
-                        f"El DNI/NIE de {miembro['nombre']} no es válido"
-                        )
-                    st.stop()
+                            f"El DNI/NIE de {miembro['nombre']} no es válido"
+                            )
+                        st.stop()
                 if not miembro["curso"].strip():
                     st.error(
                         f"El participante {miembro['nombre']} debe tener curso"
