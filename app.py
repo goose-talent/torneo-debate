@@ -118,7 +118,7 @@ with st.form("formulario_inscripcion"):
         st.markdown("---")
         st.markdown(f"## Equipo {i+1}")
         nombre_equipo = st.text_input(
-            "Nombre del equipo * (tiene que ser nombre del centro seguido de letra,ejemplo:CEIP Maximino A",
+            "Nombre del equipo * ( Tiene que incluir el nombre del centro seguido de una letra identificativa. Ejemplo: CEIP Maximino A)",
         key=f"equipo_{i}"
         )
         num_miembros = st.number_input(
