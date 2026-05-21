@@ -111,7 +111,6 @@ with st.form("formulario_inscripcion"):
         })
 
     st.subheader("Equipos participantes")
-    num_equipos = st.session_state.num_equipos
     equipos = []
     for i in range(num_equipos):
         st.markdown("---")
