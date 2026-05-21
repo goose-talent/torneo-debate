@@ -124,7 +124,7 @@ with st.form("formulario_inscripcion"):
         num_miembros = st.number_input(
             "Número de integrantes *",
             min_value=1,
-            max_value=5,
+            max_value=6,
             step=1,
             key=f"miembros_{i}"
         )
