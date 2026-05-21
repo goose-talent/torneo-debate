@@ -72,11 +72,6 @@ with st.form("formulario_inscripcion"):
         index=0
         )
     
-    num_equipos = st.selectbox(
-        "Número de equipos",
-        [1, 2, 3,4],
-        index=0
-        )
     profesores = []
 
     for i in range(num_profesores):
@@ -111,6 +106,11 @@ with st.form("formulario_inscripcion"):
         })
 
     st.subheader("Equipos participantes")
+    num_equipos = st.selectbox(
+        "Número de equipos",
+        [1, 2, 3,4],
+        index=0
+        )
     equipos = []
     for i in range(num_equipos):
         st.markdown("---")
