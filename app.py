@@ -48,6 +48,7 @@ st.markdown(
     "<span style='color:red'>*</span> Campos obligatorios",
     unsafe_allow_html=True
 )
+
 with st.form("formulario_inscripcion"):
     
     torneo = st.subheader("II Concurso De Oratoria Para Primaria JMD CHAMBERÍ *")
@@ -65,14 +66,17 @@ with st.form("formulario_inscripcion"):
     director = st.text_input("Director del centro *")
     
     st.subheader("Datos de la convocatoria")
-    num_profesores = st.number_input(
-        "Número de profesores",
-        min_value=1,
-        max_value=3,
-        value=1,
-        step=1
+    num_profesores = st.selectbox(
+        "Número de profesores/formadores",
+        [1, 2, 3],
+        index=0
         )
     
+    num_equipos = st.selectbox(
+        "Número de equipos",
+        [1, 2, 3,4],
+        index=0
+        )
     profesores = []
 
     for i in range(num_profesores):
@@ -107,12 +111,7 @@ with st.form("formulario_inscripcion"):
         })
 
     st.subheader("Equipos participantes")
-    num_equipos = st.number_input(
-        "Número de equipos",
-        min_value=1,
-        max_value=3,
-        step=1
-    )
+    num_equipos = st.session_state.num_equipos
     equipos = []
     for i in range(num_equipos):
         st.markdown("---")
@@ -121,13 +120,12 @@ with st.form("formulario_inscripcion"):
             "Nombre del equipo * ( Tiene que incluir el nombre del centro seguido de una letra identificativa. Ejemplo: CEIP Maximino A)",
         key=f"equipo_{i}"
         )
-        num_miembros = st.number_input(
-            "Número de integrantes *",
-            min_value=1,
-            max_value=6,
-            step=1,
+        num_miembros = st.selectbox(
+            f"Número de integrantes del equipo {i+1}",
+            [1, 2, 3, 4, 5, 6],
             key=f"miembros_{i}"
-        )
+            )
+
         miembros = []
         for j in range(num_miembros):
             st.markdown(f" Integrante {j+1}")
